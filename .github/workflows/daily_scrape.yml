@@ -1,0 +1,48 @@
+# Quant Trading Brain — Daily Research Scraper
+
+name: Daily Quant Research
+
+on:
+  schedule:
+    - cron: "0 8 * * *"  # 08:00 UTC every day
+  workflow_dispatch:         # manual trigger
+  push:                     # also run on push
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout vault
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install python-dateutil
+        run: pip install python-dateutil
+
+      - name: Run scraper
+        env:
+          OBSIDIAN_VAULT_PATH: ${{ github.workspace }}
+        run: python -m scraper.main
+
+      - name: Commit new sources
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sources/00_Inbox/
+          git diff --cached --quiet || {
+            count=$(git diff --cached --name-only | wc -l)
+            echo "Committing $count new files"
+            git commit -m "chore: ingest $(date +%Y-%m-%d) research sources"
+            git push
+          }
