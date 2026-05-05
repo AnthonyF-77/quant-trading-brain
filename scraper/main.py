@@ -9,8 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from sources.arxiv_source import fetch as fetch_arxiv
-from sources.rss_source import fetch as fetch_rss
+from sources.arxiv_source import fetch_all as fetch_arxiv
+from sources.rss_source import fetch_all as fetch_rss
 
 
 def main():
