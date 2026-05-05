@@ -1,0 +1,16 @@
+{
+  "title": "A Levered ETF Anomaly Explained",
+  "authors": [
+    "Stephen W. Bianchi",
+    "Lisa R. Goldberg"
+  ],
+  "abstract": "Counterintuitively, the S&P 500 Index rose between January 1, 2022, and December 29, 2023, while exchange-traded funds (ETFs) seeking to deliver 2x and 3x daily returns of the index delivered substantially negative returns. Roughly two-thirds of the difference between the returns of the index and the levered ETFs can be attributed to compounding and volatility. The remaining difference is explained by the covariance between the ETFs' deviations from constant leverage and the index's return.",
+  "categories": [
+    "q-fin.PM"
+  ],
+  "published": "2026-04-30T00:47:04Z",
+  "pdf_url": "http://arxiv.org/pdf/2604.27287v1.pdf",
+  "arxiv_id": "2604.27287v1",
+  "source": "arXiv",
+  "subcategory": "q-fin.PM"
+}

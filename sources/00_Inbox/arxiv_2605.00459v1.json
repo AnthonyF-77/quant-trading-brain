@@ -1,0 +1,15 @@
+{
+  "title": "Information Leakage at Population Scale: An Evaluation of the Polymarket Insider-Relevant Subpopulation, 2020-2026",
+  "authors": [
+    "Maksym Nechepurenko"
+  ],
+  "abstract": "We carry the deadline-resolved Information Leakage Score (ILS-dl) framework of Nechepurenko (2026a, 2026b) from a single-case proof of concept to a population-scale evaluation across 12,708 Polymarket markets, October 2020 to April 2026. We frame the paper as a scope-discovery study: scaling reveals that the framework's effective domain is materially narrower than initial framing suggested, and the principal obstacle is not score computation but resolution semantics.   We report four findings. First, only 88 of 12,708 candidate markets (0.7%) yield computable ILS-dl values; only 1 of 32 markets in the ForesightFlow Insider Cases (FFIC) inventory is in scope, and 14 of 32 FFIC markets are flagged unclassifiable due to genuine resolution-criterion ambiguity. Second, only 12 of the 88 computed markets (13.6%) satisfy anchor-sensitivity, and an independent-second-pass T_event validation reaches 57.8% exact-date agreement, below the 90% ex-ante criterion. Third, raw ILS-dl medians are negative across all six (sub-bucket by period) cells, but a hazard-decay baseline correction we introduce yields a heterogeneous result: regulatory_formal post-2024 shifts to near-zero (-0.21 to -0.02), while regulatory_announcement post-2024 retains a 95% bootstrap CI entirely below zero. Fourth, the constant-hazard exponential of Nechepurenko (2026b) is rejected in favor of Weibull on the pooled post-2024 cell, but a per-subcategory check confirms the preference reflects category mixture rather than within-cell duration dependence.   The implication is that detection of informed flow requires methodological refinement on the resolution-typology and score-baseline axes, not only on the score-computation axis where prior work concentrated.",
+  "categories": [
+    "q-fin.GN"
+  ],
+  "published": "2026-05-01T06:45:23Z",
+  "pdf_url": "http://arxiv.org/pdf/2605.00459v1.pdf",
+  "arxiv_id": "2605.00459v1",
+  "source": "arXiv",
+  "subcategory": "q-fin.GN"
+}

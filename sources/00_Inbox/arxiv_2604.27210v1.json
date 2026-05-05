@@ -1,0 +1,15 @@
+{
+  "title": "Fast-Vollib: A Fast Implied Volatility Library for Pythonwith PyTorch, JAX, and CUDA Fused-Kernel Backends",
+  "authors": [
+    "Raeid Saqur"
+  ],
+  "abstract": "We present fast-vollib, an open-source Python library that provides high-performance European option pricing, implied volatility (IV) computation, and Greeks under the Black-76, Black-Scholes, and Black-Scholes-Merton models. The library is designed as a drop-in alternative to the de-facto-standard py_vollib and py_vollib_vectorized packages, with pluggable PyTorch and JAX execution backends, a CUDA fused-kernel Triton contribution for batched IV workloads, and a compatibility-first public API. In addition to a vectorized Halley-method IV solver, fast-vollib ships an experimental, fully-vectorized implementation of Jäckel's \"Let's Be Rational\" (LBR) algorithm with NumPy/Numba, torch.compile, JAX, and Triton single-pass GPU kernels for batched option chains. This note announces the library and describes its public API surface, with source, documentation, and packaging artifacts available at: GitHub (https://github.com/raeidsaqur/fast-vollib), Docs (https://raeidsaqur.github.io/fast-vollib/), PyPI (https://pypi.org/project/fast-vollib/).",
+  "categories": [
+    "q-fin.PR"
+  ],
+  "published": "2026-04-29T21:29:32Z",
+  "pdf_url": "http://arxiv.org/pdf/2604.27210v1.pdf",
+  "arxiv_id": "2604.27210v1",
+  "source": "arXiv",
+  "subcategory": "q-fin.PR"
+}

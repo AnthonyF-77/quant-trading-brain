@@ -1,0 +1,15 @@
+{
+  "title": "Fast Monte-Carlo",
+  "authors": [
+    "Irene Aldridge"
+  ],
+  "abstract": "This paper proposes an eigenvalue-based small-sample approximation of the celebrated Markov Chain Monte Carlo that delivers an invariant steady-state distribution that is consistent with traditional Monte Carlo methods. The proposed eigenvalue-based methodology reduces the number of paths required for Monte Carlo from as many as 1,000,000 to as few as 10 (depending on the simulation time horizon $T$), and delivers comparable, distributionally robust results, as measured by the Wasserstein distance. The proposed methodology also produces a significant variance reduction in the steady-state distribution.",
+  "categories": [
+    "q-fin.RM"
+  ],
+  "published": "2026-05-03T23:06:24Z",
+  "pdf_url": "http://arxiv.org/pdf/2605.02085v1.pdf",
+  "arxiv_id": "2605.02085v1",
+  "source": "arXiv",
+  "subcategory": "q-fin.RM"
+}

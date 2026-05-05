@@ -1,0 +1,18 @@
+{
+  "title": "Do News and Social Media Tell the Same Story? Constructing and Comparing Sentiment Spillover Networks",
+  "authors": [
+    "Fan Wu",
+    "Anqi Liu",
+    "Maggie Chen",
+    "Yuhua Li"
+  ],
+  "abstract": "Investor sentiment reflects the collective attitude of investors towards the asset, whether positive, negative or neutral. Market information, such as news and relevant social media posts, plays a significant role in shaping investor sentiment, which influences investment decisions accordingly. The sentiment for one single company may spill over to other relevant companies which are in the same industry. The information spillover network pattern between news and social media may also differ, as they are two different media sources. In this study, we introduce a network-based transfer entropy method to measure and compare the information transmission of news and social media sentiment across the technology companies. We examine whether and to what extent sentiment information from one company can transfer to other companies, and how different the spillover effect is for news and social media. The result signifies a stronger intensity of news information flow among the tech companies after COVID-19. We also highlight the companies which act as information hubs in the sentiment network. Furthermore, we identify the companies which lead the strongest information flow chain. Overall, this study provides a novel perspective in modelling sentiment spillover under two different media sources, and we find that news and social media show a different information transmission pattern during the studied period.",
+  "categories": [
+    "q-fin.ST"
+  ],
+  "published": "2026-04-29T15:41:50Z",
+  "pdf_url": "http://arxiv.org/pdf/2604.26811v1.pdf",
+  "arxiv_id": "2604.26811v1",
+  "source": "arXiv",
+  "subcategory": "q-fin.ST"
+}

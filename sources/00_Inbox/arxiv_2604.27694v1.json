@@ -1,0 +1,15 @@
+{
+  "title": "The Satoshi Overhang: Why the Bear Case is Bounded",
+  "authors": [
+    "Karl T. Ulrich"
+  ],
+  "abstract": "Renewed public attention on the identity of Bitcoin's pseudonymous creator has sharpened focus on the Satoshi overhang, commonly framed as a tail risk for bitcoin. This paper argues that the mechanical downside of a disposition is bounded well below the existential-loss framing, and that the terminal states most consistent with sixteen years of holder behavior are nonbearish for bitcoin's effective supply. The approximately 1.148 million BTC Patoshi position is analyzed on two tracks. For a purely wealth-maximizing holder, a three-scenario quantitative analysis (Appendix A) shows that bitcoin's current market depth is sufficient to absorb a patient multi-year liquidation at a cumulative price impact in the mid-single-digit to mid-double-digit percent range relative to counterfactual, with the central scenario clustering near 10 percent. The paper maps a decision space rather than identifying a unique modal outcome, assuming a holder whose profile is consistent with the sixteen-year record. Preference sets consistent with the record, including ideological non-intervention, privacy above all, satisficing, and myth preservation, favor continued dormancy terminating in a cryptographically enforced nonrecovery or destruction arrangement; preference sets favoring adversarial or wealth-maximizing action are possible but less supported. Across the plausible region of the decision space, the bear case is bounded and the terminal states most consistent with observed behavior are neutral to slightly positive for bitcoin's effective supply.",
+  "categories": [
+    "q-fin.GN"
+  ],
+  "published": "2026-04-30T10:37:02Z",
+  "pdf_url": "http://arxiv.org/pdf/2604.27694v1.pdf",
+  "arxiv_id": "2604.27694v1",
+  "source": "arXiv",
+  "subcategory": "q-fin.GN"
+}

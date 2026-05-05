@@ -1,0 +1,17 @@
+{
+  "title": "Modeling Stock Returns and Volatility Using Bivariate Gamma Generalized Laplace Law",
+  "authors": [
+    "Tomasz J. Kozubowski",
+    "Andrey Sarantsev",
+    "James A. Spiker"
+  ],
+  "abstract": "We consider a generalization of the variance-gamma (generalized asymmetric Laplace) distribution, defined as a normal mean - variance mixture with a gamma mixing distribution. While this model is typically studied in the univariate setting, we assume that the gamma mixing variable is observed alongside the primary variable, resulting in a bivariate framework. In this setting, maximum likelihood estimation becomes significantly simpler than in the standard univariate case, reducing to a form of classical linear regression. We derive explicit expressions for the resulting estimators. For certain parameter configurations, the estimators exhibit nonstandard convergence rates, exceeding the usual square-root rate. Finally, we illustrate the applicability of this model in financial contexts by analyzing stock index returns and associated volatility for several major indices.",
+  "categories": [
+    "q-fin.ST"
+  ],
+  "published": "2026-04-30T20:21:44Z",
+  "pdf_url": "http://arxiv.org/pdf/2605.00196v1.pdf",
+  "arxiv_id": "2605.00196v1",
+  "source": "arXiv",
+  "subcategory": "q-fin.ST"
+}

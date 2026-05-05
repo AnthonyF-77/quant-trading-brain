@@ -1,0 +1,17 @@
+{
+  "title": "Distributionally Robust Insurance under Bregman-Wasserstein Divergence",
+  "authors": [
+    "Wenjun Jiang",
+    "Qingqing Zhang",
+    "Yiying Zhang"
+  ],
+  "abstract": "This paper investigates two optimal insurance contracting problems under distributional uncertainty from the perspective of a potential policyholder, utilizing a Bregman-Wasserstein (BW) ball to characterize the ambiguity set of loss distributions. Unlike the $p$-Wasserstein distance, BW divergence enables asymmetric penalization of deviations from the benchmark distribution. The first problem examines an insurance demand model where the policyholder adopts an $α$-maxmin preference with Value-at-Risk (VaR). We derive the optimal indemnity function in closed form and study, both analytically and numerically, how the asymmetry inherent in BW divergence influences the optimal indemnity structure. The second problem employs a robust optimization framework, where the policyholder aims to secure robust insurance indemnity by minimizing the worst-case convex distortion risk measure while adhering to a guaranteed VaR constraint. In this context, we provide explicit characterizations of both the optimal indemnity and the worst-case distribution in closed form through a combined approach using the Lagrangian method and modification arguments. To illustrate the practical implications of our theoretical findings, we include a concrete example based on Tail Value-at-Risk (TVaR).",
+  "categories": [
+    "q-fin.RM"
+  ],
+  "published": "2026-04-30T13:22:19Z",
+  "pdf_url": "http://arxiv.org/pdf/2604.27837v1.pdf",
+  "arxiv_id": "2604.27837v1",
+  "source": "arXiv",
+  "subcategory": "q-fin.RM"
+}

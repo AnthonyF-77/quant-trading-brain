@@ -1,0 +1,15 @@
+{
+  "title": "The Financialization of Proof-of-Stake: Asymptotic Centralization under Exogenous Risk Premiums",
+  "authors": [
+    "Mikhail Perepelitsa"
+  ],
+  "abstract": "This paper introduces a heterogeneous macroeconomic model of a Proof-of-Stake (PoS) network to analyze the long-term centralizing effects of external traditional finance (TradFi) yields. We model a continuum of rational actors divided into two distinct classes: investors, who optimize portfolios between staking and external variance-dominated investments, and consumers, who balance staking yields against the transactional utility of holding liquid assets. By employing a quasi-linear utility function to model consumer behavior, we derive a cubic polynomial that strictly defines the unique macroeconomic equilibrium of the coupled network. The model demonstrates that, at scale, external macroeconomic factors force the complete institutional capture of the PoS consensus layer. Because investors have access to external risk premiums, their wealth compounds exponentially, leading to massive capital inflows that crush the protocol's internal staking yield to effectively zero. We show that as the yield is crushed, consumer wealth becomes strictly upper-bounded. Ultimately, consumers are forced to cease staking entirely and hold all remaining wealth in liquid form to satisfy their transactional constraints.",
+  "categories": [
+    "q-fin.GN"
+  ],
+  "published": "2026-04-28T19:40:04Z",
+  "pdf_url": "http://arxiv.org/pdf/2604.26076v2.pdf",
+  "arxiv_id": "2604.26076v2",
+  "source": "arXiv",
+  "subcategory": "q-fin.GN"
+}

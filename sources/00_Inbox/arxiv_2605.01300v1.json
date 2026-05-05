@@ -1,0 +1,15 @@
+{
+  "title": "Visibility graphs can make money in financial markets",
+  "authors": [
+    "Rafał Rak"
+  ],
+  "abstract": "Traditional technical analysis indicators, although widely used by market participants, are often not sufficiently effective. We propose the Visibility Graphs Relative Strength Index (VGRSI), based on backward visibility relations in the price of a financial instrument. Rescaled to the 0--100 range, it can generate profitable trading signals. The performance of the indicator was evaluated using an automated trading strategy based on a 30-day optimisation window and a 7-day test window for three instruments representing different asset classes: DJI30, EUR/USD and XAU/USD over the 2024--2025 period (503 trading days). The strategy based on VGRSI signals generated a profit of USD~146,000 for DJI30, USD~69,000 for EUR/USD, and USD~125,000 for XAU/USD. This gives a total result of USD$\\sim$340,000, which corresponds to an average profit of USD$\\sim$676 per trading day, with a fixed investment of USD~1,000 to open a single trade. For all three assets, the strategy generated substantial profits while maintaining a moderate drawdown (10--18\\% relative to a portfolio value of USD~10,000), a relatively low trading intensity (3.3--4.8 trades per day) and high Sharpe ratio values (2.55--3.6). These results indicate that VGRSI constitutes a promising technical analysis tool that goes beyond the classical trend-following approach by exploiting the geometric properties of asset price fluctuations.",
+  "categories": [
+    "q-fin.TR"
+  ],
+  "published": "2026-05-02T07:21:08Z",
+  "pdf_url": "http://arxiv.org/pdf/2605.01300v1.pdf",
+  "arxiv_id": "2605.01300v1",
+  "source": "arXiv",
+  "subcategory": "q-fin.TR"
+}

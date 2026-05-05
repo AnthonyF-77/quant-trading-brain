@@ -1,0 +1,18 @@
+{
+  "title": "Learning to Spend: Model Predictive Control for Budgeting under Non-Stationary Returns",
+  "authors": [
+    "Nilavra Pathak",
+    "Smriti Shyamal",
+    "Prasant Mhasker",
+    "Christopher Swartz"
+  ],
+  "abstract": "We study finite-horizon budget allocation as a closed-loop economic control problem and evaluate receding-horizon Model Predictive Control (MPC) relative to reactive budgeting policies. Budgets are allocated periodically under execution noise and operational constraints, while return efficiency may evolve over time. Using a controlled simulation framework motivated by digital marketing, we compare reactive pacing to MPC across environments with increasing degrees of non-stationarity. Our results show that non-stationarity alone does not justify predictive control. When return dynamics are stationary or evolve through unpredictable stochastic drift, MPC offers no systematic advantage over reactive baselines. By contrast, when return efficiency exhibits predictable structure over the planning horizon, that is captured through an underlying model, MPC consistently outperforms reactive budgeting by exploiting intertemporal trade-offs.",
+  "categories": [
+    "q-fin.PM"
+  ],
+  "published": "2026-04-29T20:39:25Z",
+  "pdf_url": "http://arxiv.org/pdf/2604.27186v1.pdf",
+  "arxiv_id": "2604.27186v1",
+  "source": "arXiv",
+  "subcategory": "q-fin.PM"
+}

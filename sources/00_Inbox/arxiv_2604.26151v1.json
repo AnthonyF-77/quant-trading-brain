@@ -1,0 +1,15 @@
+{
+  "title": "Pricing with Passion: The Local Occupied Volatility (LOV) Model",
+  "authors": [
+    "Valentin Tissot-Daguette"
+  ],
+  "abstract": "We introduce the Local Occupied Volatility (LOV) model that sits between Dupire's local volatility and fully path-dependent dynamics. By design, the LOV model ensures automatic calibration to European vanilla options, while offering the flexibility to capture stylized facts of volatility or fit additional instruments. This is achieved by tuning the occupation sensitivity function that quantifies the effect of path-dependent shocks on volatility. We validate the model through the joint American-European calibration of options chain on non-dividend paying stocks.",
+  "categories": [
+    "q-fin.PR"
+  ],
+  "published": "2026-04-28T22:21:30Z",
+  "pdf_url": "http://arxiv.org/pdf/2604.26151v1.pdf",
+  "arxiv_id": "2604.26151v1",
+  "source": "arXiv",
+  "subcategory": "q-fin.PR"
+}
