@@ -2,10 +2,10 @@
 import os
 import json
 import time
-import arxiv
+import requests
 from datetime import datetime, timezone
 from pathlib import Path
-from dateutil import parser as dtparser
+from urllib.parse import urlencode
 
 CATEGORIES = {
     "q-fin.GN": "General Finance",
@@ -17,48 +17,59 @@ CATEGORIES = {
 }
 
 DAYS_BACK = 7
+MAX_RESULTS = 15
 VAULT_PATH = Path(os.environ.get("OBSIDIAN_VAULT_PATH", str(Path(__file__).parent.parent)))
 
 
 def fetch_all():
-    """Fetch recent papers from all q-fin categories."""
+    """Fetch recent papers from all q-fin categories using arXiv API."""
     results = []
-    cutoff = datetime.now(timezone.utc).timestamp() - DAYS_BACK * 86400
-
-    client = arxiv.Client()
+    cutoff_dt = datetime.now(timezone.utc).timestamp() - DAYS_BACK * 86400
     out_dir = VAULT_PATH / "sources" / "00_Inbox"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     for cat, name in CATEGORIES.items():
         print(f"[arXiv] Fetching {cat} ({name})...")
         try:
-            search = arxiv.Search(
-                query=f"cat:{cat}",
-                max_results=20,
-                sort_by=arxiv.SortCriterion.SubmittedDate,
-            )
-            papers = list(client.results(search))
+            params = {
+                "search_query": f"cat:{cat}",
+                "sortBy": "submittedDate",
+                "sortOrder": "descending",
+                "start": 0,
+                "max_results": MAX_RESULTS,
+            }
+            url = "https://export.arxiv.org/api/query?" + urlencode(params)
+            resp = requests.get(url, timeout=30, allow_redirects=True,
+                                headers={"User-Agent": "quant-trading-brain/1.0"})
 
-            cat_results = []
+            if resp.status_code != 200:
+                print(f"  -> HTTP {resp.status_code}: {resp.text[:200]}")
+                time.sleep(2)
+                continue
+
+            papers = _parse_atom_feed(resp.text)
+            new_count = 0
+
             for p in papers:
-                submitted = p.published.datetime()
-                if submitted.timestamp() < cutoff:
+                try:
+                    published_ts = _parse_arxiv_date(p.get("published", ""))
+                    if published_ts < cutoff_dt:
+                        continue
+                except Exception:
                     continue
 
-                pdf_url = p.entry_id
-                arxiv_id = p.entry_id.split("/")[-1]
+                arxiv_id = p.get("id", "").split("/")[-1]
+                if not arxiv_id:
+                    continue
 
                 item = {
-                    "title": p.title,
-                    "authors": [a.name for a in p.authors],
-                    "abstract": p.summary,
-                    "categories": list(p.categories),
-                    "published": p.published.isoformat(),
-                    "pdf_url": pdf_url,
+                    "title": p.get("title", "").replace("\n", " ").strip(),
+                    "authors": p.get("authors", []),
+                    "abstract": p.get("summary", "").replace("\n", " ").strip(),
+                    "categories": [cat],
+                    "published": p.get("published", ""),
+                    "pdf_url": p.get("id", "").replace("/abs/", "/pdf/") + ".pdf",
                     "arxiv_id": arxiv_id,
-                    "comment": p.comment or "",
-                    "journal_ref": p.journal_ref or "",
-                    "doi": p.doi or "",
                     "source": "arXiv",
                     "subcategory": cat,
                 }
@@ -67,11 +78,10 @@ def fetch_all():
                 out_file = out_dir / filename
                 if not out_file.exists():
                     out_file.write_text(json.dumps(item, indent=2, ensure_ascii=False))
-                cat_results.append(item)
+                    new_count += 1
 
-            results.extend(cat_results)
-            print(f"  -> {len(cat_results)} new papers")
-            time.sleep(1)
+            print(f"  -> {new_count} new papers")
+            time.sleep(2)
 
         except Exception as e:
             print(f"  -> ERROR: {e}")
@@ -79,6 +89,43 @@ def fetch_all():
     return results
 
 
+def _parse_atom_feed(xml_text: str) -> list[dict]:
+    """Parse arXiv Atom feed into list of paper dicts."""
+    papers = []
+    import xml.etree.ElementTree as ET
+    try:
+        root = ET.fromstring(xml_text)
+    except ET.ParseError:
+        return papers
+
+    ns = {"atom": "http://www.w3.org/2005/Atom", "arxiv": "http://arxiv.org/schemas/atom"}
+
+    for entry in root.findall("atom:entry", ns):
+        def get_text(tag, fallback=None):
+            el = entry.find(f"atom:{tag}", ns)
+            return el.text.strip() if el is not None and el.text else (fallback or "")
+
+        authors = [a.find("atom:name", ns).text
+                   for a in entry.findall("atom:author", ns)
+                   if a.find("atom:name", ns) is not None and a.find("atom:name", ns).text]
+
+        papers.append({
+            "id": get_text("id"),
+            "title": get_text("title"),
+            "summary": get_text("summary"),
+            "published": get_text("published"),
+            "authors": authors,
+        })
+
+    return papers
+
+
+def _parse_arxiv_date(date_str: str) -> float:
+    """Parse arXiv date string to Unix timestamp."""
+    from email.utils import parsedate_to_datetime
+    return parsedate_to_datetime(date_str).timestamp()
+
+
 if __name__ == "__main__":
     results = fetch_all()
-    print(f"\nTotal: {len(results)} papers saved to inbox")
+    print(f"\nTotal papers processed")
