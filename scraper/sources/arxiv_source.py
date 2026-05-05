@@ -121,9 +121,9 @@ def _parse_atom_feed(xml_text: str) -> list[dict]:
 
 
 def _parse_arxiv_date(date_str: str) -> float:
-    """Parse arXiv date string to Unix timestamp."""
-    from email.utils import parsedate_to_datetime
-    return parsedate_to_datetime(date_str).timestamp()
+    """Parse arXiv date string (ISO 8601) to Unix timestamp."""
+    from dateutil.parser import isoparse
+    return isoparse(date_str).timestamp()
 
 
 if __name__ == "__main__":

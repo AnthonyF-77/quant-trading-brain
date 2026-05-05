@@ -28,7 +28,7 @@ def main():
     rss_results = fetch_rss()
     print()
 
-    vault_path = Path(os.environ.get("OBSIDIAN_VAULT_PATH", str(Path(__file__).parent.parent)))
+    vault_path = Path(os.environ.get("OBSIDIAN_VAULT_PATH", str(Path(__file__).parent.parent.parent)))
     inbox_count = len(list((vault_path / "sources" / "00_Inbox").glob("*.json")))
     print(f"Done. Inbox now has {inbox_count} items.")
 
