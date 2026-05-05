@@ -1,0 +1,12 @@
+{
+  "title": "Correlated Time Series Generation using Object Oriented Python",
+  "url": "https://www.quantstart.com/articles/correlated-time-series-generation-using-object-oriented-python/",
+  "summary": "<p>This article is a continuation of a series of articles on generating synthetic equities datasets for the purposes of machine learning (ML) model training or synthetic backtesting of systematic trading strategies.</p>\n\n<p>We have previously considered the <a href=\"https://www.quantstart.com/articles/correlation-matrix-generationg-using-object-oriented-python/\">generation of synthetic correlation matrices</a> and the <a href=\"https://www.quantstart.com/articles/time-series-models-using-object-oriented-py [...]",
+  "published": "",
+  "author": "",
+  "source": "QuantStart",
+  "category": "General",
+  "domain": "quantstart.com",
+  "source_type": "rss",
+  "content": ""
+}
