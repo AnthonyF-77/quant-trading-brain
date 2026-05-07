@@ -13,6 +13,11 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from market_data.fetch import fetch_us_stock, fetch_a_share, fetch_crypto
 from analysis.technical import analyze, compute_factors, score_against_research
+from analysis.charts import (
+    plot_candlestick_with_indicators,
+    plot_factor_comparison,
+    plot_momentum_chart,
+)
 
 UNIVERSE = {
     "us_etf": ["SPY", "QQQ", "IWM", "DIA", "XLE", "XLF", "XLK", "XLV", "XLY",
@@ -95,12 +100,45 @@ def build_report(market: str, results: list[dict], top_n: int = 5) -> dict:
     return report
 
 
+def generate_charts_for_results(results: list[dict], market_name: str):
+    """Generate charts for scan results."""
+    print(f"\n[Charts] Generating charts for {market_name}...", file=sys.stderr)
+    chart_dir = Path(__file__).parent.parent / "sources" / "01_Markets" / "charts"
+    chart_dir.mkdir(parents=True, exist_ok=True)
+
+    top_tickers = [r["ticker"] for r in results[:5]]
+
+    for ticker in top_tickers:
+        ticker_data = None
+        market = results[0].get("market", "US") if results else "US"
+        if market == "A-share" or ticker.startswith(("6", "0", "8")):
+            ticker_data = fetch_a_share(ticker, "3mo")
+        elif "/" in ticker:
+            ticker_data = fetch_crypto(ticker, period="3mo")
+        else:
+            ticker_data = fetch_us_stock(ticker, "3mo")
+        if ticker_data and "error" not in ticker_data:
+            r = plot_candlestick_with_indicators(ticker, ticker_data)
+            png = r.get("png", r.get("html", ""))
+            print(f"  [Chart] {ticker}: {Path(png).name}", file=sys.stderr)
+
+    factor_r = plot_factor_comparison(results, factor="volatility_20d",
+                                      title=f"{market_name} — 20-Day Volatility Comparison")
+    print(f"  [Chart] Factor (vol): {Path(factor_r.get('png','')).name}", file=sys.stderr)
+
+    mom_r = plot_momentum_chart(results)
+    print(f"  [Chart] Momentum scatter: {Path(mom_r.get('png','')).name}", file=sys.stderr)
+
+    print(f"[Charts] Saved to: {chart_dir}", file=sys.stderr)
+
+
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Quant Trading Brain Scanner")
     parser.add_argument("--market", choices=["us", "a-share", "crypto", "all"], default="all")
     parser.add_argument("--top", type=int, default=5, help="Top N picks to show")
     parser.add_argument("--output", choices=["json", "text"], default="text")
+    parser.add_argument("--charts", action="store_true", help="Generate charts for top picks")
     args = parser.parse_args()
 
     tickers_to_scan = []
@@ -130,6 +168,8 @@ def main():
                 print(json.dumps(report, indent=2, default=str))
             else:
                 print_report(report)
+            if args.charts and market_results:
+                generate_charts_for_results(market_results, market_name)
     else:
         market_map = {"us": "US", "a-share": "A-Share", "crypto": "Crypto"}
         report = build_report(market_map.get(args.market, args.market), results, top_n=args.top)
@@ -137,6 +177,8 @@ def main():
             print(json.dumps(report, indent=2, default=str))
         else:
             print_report(report)
+        if args.charts:
+            generate_charts_for_results(results, market_map.get(args.market, args.market))
 
 
 def print_report(report: dict):

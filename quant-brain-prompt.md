@@ -231,6 +231,51 @@ python3 quant-scan.py --market us --output json   # JSON格式输出
 
 ---
 
+## 图表生成能力
+
+运行以下命令生成图表：
+
+```bash
+cd ~/Documents/quant-trading-brain
+
+# K线图 + 技术指标（自动生成MA/MACD/RSI）
+python3 quant-chart.py --chart candle --ticker AAPL
+
+# 多资产归一化对比图
+python3 quant-chart.py --chart compare --tickers AAPL,MSFT,NVDA
+
+# 因子对比柱状图（波动率/动量/夏普）
+python3 quant-chart.py --chart factor --factor volatility_20d --results-json results.json
+
+# 动量散点图（20d vs 60d）
+python3 quant-chart.py --chart momentum --results-json results.json
+
+# 扫描 + 自动生成图表
+python3 quant-scan.py --market us --top 5 --charts
+```
+
+### 图表类型说明
+
+| 图表 | 内容 | 用途 |
+|------|------|------|
+| **K线图** | K线 + MA5/10/20/50/200 + 成交量 + MACD + RSI | 完整技术分析 |
+| **归一化对比图** | 多资产从100起步的价格曲线对比 | 相对强弱分析 |
+| **因子柱状图** | 按因子值排序的横向柱图 | 快速筛选 |
+| **动量散点图** | 20d vs 60d 动量散点 | 趋势/均值回归识别 |
+
+### 图表存储位置
+
+```
+sources/01_Markets/charts/
+├── AAPL_candle.png         # K线图 PNG
+├── AAPL_candle.html        # K线图 交互HTML
+├── factor_volatility_20d.png
+├── momentum_scatter.png
+└── *_compare.png
+```
+
+---
+
 ### 免责声明模板
 
 > **免责声明**: 本分析基于技术指标和量化模型，仅供参考，不构成投资建议。过往表现不代表未来收益。投资有风险，入市需谨慎。请在做出任何投资决策前进行独立研究。
